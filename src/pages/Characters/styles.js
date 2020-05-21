@@ -3,25 +3,33 @@ import styled from 'styled-components';
 export const Container = styled.div`
     padding: 0 30px;
     margin: 32px auto;
-
     width: 100%;
     max-width: 1280px;
+
+    ul{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        position: relative;
+        list-style: none;
+    }
+
+    ul li{
+        padding: 24px;
+        position: relative;
+    }
 `;
 
 export const Header = styled.div`
     display: flex;
     align-items: center;
-    height: 150px;
-    background: white;
+
+    img{
+        margin: 0px auto;
+    }
 `;
 
-export const Card = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    
-
-    position: relative;
-    
+export const Card = styled.div`  
+    display: inline-grid;
     background:black;
 `;
 

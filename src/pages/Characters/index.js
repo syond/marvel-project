@@ -35,18 +35,18 @@ export default class Character extends React.Component{
                     <Header>
                         <img src={Logo} alt="Marvel" width="300" height="300" />
                     </Header>
-                    { 
-                        this.state.data.map((character, index) =>
-                            <Card key={index}>
-                                <Thumbnail alt="heroThumbnail" 
-                                    src={character.thumbnail.path + '.' + character.thumbnail.extension}
-                                />
-                                <CardText> 
-                                    {character.name}
-                                </CardText>
-                            </Card>
-                        )
-                    }
+                    <ul>
+                        { 
+                            this.state.data.map((character, index) =>
+                                <li key={index}>
+                                    <Thumbnail src={character.thumbnail.path + '.' + character.thumbnail.extension}/>
+                                    <CardText>
+                                        {character.name}
+                                    </CardText>
+                                </li>
+                            )
+                        }
+                    </ul>
                 </Container>
         )
     };
