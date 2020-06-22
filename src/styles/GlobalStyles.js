@@ -22,7 +22,7 @@ export default createGlobalStyle`
     }
     
     body {
-      background: #F0F0F5;
+      background: #36393f;
       -webkit-font-smoothing: antialiased;
       color: var(--text-color);
     }
@@ -32,8 +32,12 @@ export default createGlobalStyle`
     }
     
     h1, h2, h3, h4, h5, h6 {
-      color: var(--title-color);
+      color: var(--white);
       font-family: Roboto;
+    }
+
+    p{
+      color: var(--white);
     }
 `
 

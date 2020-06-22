@@ -1,23 +1,10 @@
-#page-home{
-    height: 100vh;
-}
-
-#page-home .content{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 30px;
-
-    display: flex;
-    flex-direction: column;
-}
 
     #page-home .content header{
-        margin: 40px 0 0;
+        
     }
         
         #page-home .content header img{
-            height: 100px;
-            width: 250px;
+            
 
         }
 
@@ -50,10 +37,6 @@
         margin: 0 auto;
         margin-top: 48px;
     }
-        #page-home .content legend h2{
-            color: var(--title-color);
-        }
-
         #page-home .content legend p{
             margin-top: 12px;        
         }
