@@ -22,7 +22,7 @@ const Character = () => {
         const valuesHashGenerate = hashGenerate();
 
         try {
-            api.get(`${process.env.REACT_APP_API_URL && query}?ts=${valuesHashGenerate.timestamp}&orderBy=${orderBy}&limit=${limit}&apikey=${process.env.REACT_APP_API_KEY}&hash=${valuesHashGenerate.hash}`)
+            await api.get(`${query}?ts=${valuesHashGenerate.timestamp}&orderBy=${orderBy}&limit=${limit}&apikey=${process.env.REACT_APP_API_KEY}&hash=${valuesHashGenerate.hash}`)
                 .then(response => {
                     setCharacters(response.data.data.results);
             });
