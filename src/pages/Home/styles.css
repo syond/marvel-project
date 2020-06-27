@@ -1,50 +1,3 @@
-
-    #page-home .content header{
-        
-    }
-        
-        #page-home .content header img{
-            
-
-        }
-
-    #page-home .content nav{
-        margin: 0 auto;
-        margin-top: 40px;
-    }
-    
-        #page-home .content nav ul{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            list-style-type: none;
-        }
-        
-            #page-home .content nav ul li{
-                display: flex;
-                flex-direction: row;
-                padding-right: 30px;
-            }
-
-            #page-home .content nav ul li:hover{
-                cursor: pointer;
-            }    
-
-    #page-home .content legend{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 auto;
-        margin-top: 48px;
-    }
-        #page-home .content legend p{
-            margin-top: 12px;        
-        }
-
-    #page-home .content main{
-        margin-top: 30px;
-    }
-
         .heroes-grid{
             display: flex;
             justify-content: space-around;
@@ -68,14 +21,3 @@
                 .heroes-grid li span{
                     
                 }
-    
-    #page-home .content footer{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin: 0 auto;
-    }
-        #page-home .content footer span{
-            margin-top: 50px;
-            text-align: center;
-        }

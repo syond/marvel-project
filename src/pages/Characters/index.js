@@ -1,92 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import api from '../../services/api';
-import { hashGenerate } from '../../services/hashGenerator';
+import React, { useState, useEffect } from "react";
+import api from "../../services/api";
+import { hashGenerate } from "../../services/hashGenerator";
 
-import NavMenu from '../../components/NavMenu';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import { Main, slideAnimation } from '../../components/Main';
-
-import '../Home/styles.css'
+import Title from '../../components/Title';
+import Main from "../../components/Main";
 
 
 const Character = () => {
+  const [characters, setCharacters] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    const [characters, setCharacters]   = useState([]);
-    const [loading, setLoading]         = useState(false);
+  async function getCharacters() {
+    const orderBy = "name";
+    const limit = 4;
+    const query = "characters";
+    const valuesHashGenerate = hashGenerate();
 
-    async function getCharacters(){
-        const orderBy ='name';
-        const limit = 4;
-        const query = 'characters';
-        const valuesHashGenerate = hashGenerate();
+    try {
+      await api
+        .get(
+          `${query}?ts=${valuesHashGenerate.timestamp}&orderBy=${orderBy}&limit=${limit}&apikey=${process.env.REACT_APP_API_KEY}&hash=${valuesHashGenerate.hash}`
+        )
+        .then((response) => {
+          setCharacters(response.data.data.results);
+        });
 
-        try {
-            await api.get(`${query}?ts=${valuesHashGenerate.timestamp}&orderBy=${orderBy}&limit=${limit}&apikey=${process.env.REACT_APP_API_KEY}&hash=${valuesHashGenerate.hash}`)
-                .then(response => {
-                    setCharacters(response.data.data.results);
-            });
-            
-            setLoading(true);
-        } catch (error) {
-            console.log(error);
-        }
+      setLoading(true);
+    } catch (error) {
+      console.log(error);
     }
+  }
 
-    useEffect(() => {
-        getCharacters(); 
-    }, []);
+  useEffect(() => {
+    getCharacters();
+  }, []);
 
+  return (
+    <>
+      <Title>
+        <h2>Characters</h2>
+        <p>See all the Marvel characters</p>
+      </Title>
 
-    return (
-        <div id="page-home">
-            <div className="content">
-                    <Header />
-
-                    <NavMenu />
-
-                <legend>
-                    <h2>Characters</h2>
-                    <p>See all the Marvel characters</p>
-                </legend>
-
-                {loading ? 
-                    <Main 
-                        variants={slideAnimation}
-                        animate="show" 
-                        initial="initial"
-                        exit="hide"
-                    >
-                        <ul className="heroes-grid">
-                            {
-                                characters.map((character) =>
-                                    <li key={character.id}>
-                                        <img src={character.thumbnail.path + '.' + character.thumbnail.extension} alt={character.name} />
-                                        <span>
-                                            {character.name}
-                                        </span>
-                                    </li>
-                                )
-                            }
-                        </ul>
-                    </Main>
-                 : 
-                    <Main 
-                        variants={slideAnimation}
-                        animate="show" 
-                        initial="initial"
-                        exit="hide"
-                    >
-                        Loading...
-                    </Main>
-                }
-
-                <Footer />
-
-            </div>
-        </div>
-    )
-}
-
+      {loading ? (
+        <Main
+          variants={{
+            show: {
+              x: 0,
+              opacity: 1,
+            },
+            hide: {
+              x: -50,
+              opacity: 0,
+            },
+            initial: {
+              x: "100%",
+              opacity: 0,
+            },
+          }}
+          animate="show"
+          initial="initial"
+          exit="hide"
+        >
+          <ul className="heroes-grid">
+            {characters.map((character) => (
+              <li key={character.id}>
+                <img
+                  src={
+                    character.thumbnail.path +
+                    "." +
+                    character.thumbnail.extension
+                  }
+                  alt={character.name}
+                />
+                <span>{character.name}</span>
+              </li>
+            ))}
+          </ul>
+        </Main>
+      ) : (
+        <Main>Loading...</Main>
+      )}
+    </>
+  );
+};
 
 export default Character;

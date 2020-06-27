@@ -1,17 +1,34 @@
-import React from 'react';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-import { Container, Logo, Menu } from './styles';
+import { Container, Logo, Nav } from "./styles";
 
-import logoImg from '../../assets/MarvelLogo.svg';
+import logo from "../../assets/MarvelLogo.svg";
+
+import NavItem from "../NavItem";
+
 
 const Header = () => {
-    return(
-        <Container>
-            <Logo src={logoImg} />
-            <Menu />
-        </Container>
-    );
-}
-
+  return (
+    <Container>
+      <NavLink to="/">
+        <Logo>
+          <img src={logo} alt="Marvel Comics" />
+        </Logo>
+      </NavLink>
+      <Nav>
+        <NavLink to="/characters">
+          <NavItem label="Characters" />
+        </NavLink>
+        <NavLink to="/comics">
+          <NavItem label="Comics" />
+        </NavLink>
+        <NavLink to="/about">
+          <NavItem label="About" />
+        </NavLink>
+      </Nav>
+    </Container>
+  );
+};
 
 export default Header;

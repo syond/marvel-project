@@ -4,12 +4,12 @@ import Title from "../../components/Title";
 import Main from "../../components/Main";
 
 
-const Comic = () => {
+const About = () => {
   return (
     <>
       <Title>
         <h2>Welcome</h2>
-        <p>See all the Marvel comics here :)</p>
+        <p>See all the Marvel content here :)</p>
       </Title>
 
       <Main
@@ -31,10 +31,10 @@ const Comic = () => {
         initial="initial"
         exit="hide"
       >
-        Comics Page
+        About Page
       </Main>
     </>
   );
 };
 
-export default Comic;
+export default About;

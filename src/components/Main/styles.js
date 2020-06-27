@@ -1,12 +1,9 @@
-import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-
-export const Main = styled(motion.div)`
-    flex: 1;
+export const Container = styled(motion.div)`
+    margin-top: 30px;
 `
-
 
 export const slideAnimation = {
     show: {

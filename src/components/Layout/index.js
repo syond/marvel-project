@@ -1,16 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { Flex } from './styles';
-import Header from '../Header';
+import { Flex } from "./styles";
 
-
-const Layout = () => {
-    return(
-        <Flex>
-            <Header />
-        </Flex>
-    );
-}
-
+const Layout = (props) => {
+  return <Flex>{props.children}</Flex>;
+};
 
 export default Layout;
