@@ -4,6 +4,7 @@ import { hashGenerate } from "../../utils/hashGenerator";
 
 import Title from '../../components/Title';
 import Main from "../../components/Main";
+import Grid from '../../components/Grid';
 
 
 const Character = () => {
@@ -60,7 +61,7 @@ const Character = () => {
           initial="initial"
           exit="hide"
         >
-          <ul className="heroes-grid">
+          <Grid>
             {characters.map((character) => (
               <li key={character.id}>
                 <img
@@ -74,10 +75,10 @@ const Character = () => {
                 <span>{character.name}</span>
               </li>
             ))}
-          </ul>
+          </Grid>
         </Main>
       ) : (
-        <Main>Loading...</Main>
+        <Grid>Loading...</Grid>
       )}
     </>
   );
