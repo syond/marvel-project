@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
-import { hashGenerate } from "../../services/hashGenerator";
+import { hashGenerate } from "../../utils/hashGenerator";
 
 import Title from '../../components/Title';
 import Main from "../../components/Main";
@@ -10,10 +10,7 @@ const Character = () => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  async function getCharacters() {
-    const orderBy = "name";
-    const limit = 4;
-    const query = "characters";
+  async function getCharacters(orderBy, limit, query) {
     const valuesHashGenerate = hashGenerate();
 
     try {
@@ -26,13 +23,14 @@ const Character = () => {
         });
 
       setLoading(true);
+
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    getCharacters();
+    getCharacters('name', 4, 'characters');
   }, []);
 
   return (
